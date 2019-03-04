@@ -2,12 +2,13 @@ import style from './style.css';
 
 export default function Card({
 	onClick,
+    rhymeStatus,
 	rhymeValue,
 	word
 }) {
 
 	return (
-		<div class={style.card}>
+		<div class={style.card} data-rhyme-status={rhymeStatus}>
 			<button class={style.front} onClick={onClick}>
 				{word}
 			</button>

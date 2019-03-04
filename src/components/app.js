@@ -9,18 +9,18 @@ import * as data from '../data/words.json';
 
 // Fischer-Yates shuffle
 function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]];
+	}
 }
 
 /**
  * helper function to generate a schuffled array of cards
  */
 function generateGridCards () {
-	const ay = data['ay'];
-	const ee = data['ee'];
+	const ay = data.ay;
+	const ee = data.ee;
 
 	shuffleArray(ay)
 	shuffleArray(ee);

@@ -34,3 +34,12 @@
 .card .back {
   background: white;
 }
+
+.card[data-flip-status="FLIPPED"], .card[data-flip-status="MATCHED"], .back{
+  transform: rotateY(180deg);
+}
+
+.card[data-flip-status="MATCHED"] .back{
+  opacity: 0.2;
+  border: 3px dashed red;
+}
