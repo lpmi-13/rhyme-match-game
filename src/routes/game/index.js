@@ -6,68 +6,37 @@ import style from './style';
 
 export default class Game extends Component {
 	state = {
-		flippedCards: { first: {}, second: {} },
-		isMatched: {},
+		correctCards: [],
+		wrongCards: [],
+		rhymeToMatch: 'ay',
 		score: 0
 	};
 
-	getCardFlipStatus = ({ key, emoji }) => {
-		const { flippedCards, isMatched } = this.state;
-		
-		if (isMatched[emoji]) {
-			return 'MATCHED';
-		}
-		
-		if ([flippedCards.first.key,  flippedCards.second.key].includes(key)) {
-			return 'FLIPPED';
-		}
-
-
-		return 'DEFAULT';
-	}
-
 	createCardClickListener = card => () => {
-		this.flipCard(card);
+		console.log(card);
+		this.checkCardStatus(card);
 	}
 	
-	flipCard = card => {
-		const { flippedCards } = this.state;
+	checkCardStatus = card => {
+		const { correctCards, rhymeToMatch, score, wrongCards } = this.state;
 
-		// if it's the first card to be flipped, we don't need
-		// to worry about anything else
-		const isFirstFlippedCard = Object.keys(flippedCards.first).length === 0;
-		if (isFirstFlippedCard) {
-			return this.setState({ flippedCards: { ...flippedCards, first: card } });
+		if (card.rhyme === rhymeToMatch) {
+			this.setState({
+				correctCards: [ ...correctCards, card ],
+				score: score + 1
+			});
+		} else {
+			this.setState({ wrongCards: [ ...wrongCards, card ] });
 		}
-
-		this.flipSecondCard(card);
-
-	}
-
-	flipSecondCard = card => {
-		const { flippedCards, isMatched, score } = this.state;
-
-		// Flip the second and then check after 500 ms whether it's a match
-		// or mismatch and handle it
-		this.setState({ flippedCards: { ...flippedCards, second: card } });
-		setTimeout(() => {
-			if (flippedCards.first.emoji === card.emoji) {
-				// it's a match
-				this.setState({ score: score + 1, isMatched: { ...isMatched, [card.emoji]: true } });
-				if (score === 5) {
-					this.handleWin();
-				}
-			}
-
-			// it's a mismatch, so flip the cards back
-			this.setState({ flippedCards: { first: {}, second: {} } });
-		}, 500);
+		if(score >= 8) {
+			this.handleWin();
+		}
 	}
 
 	handleWin = () => {
 		setTimeout(() => {
 			route('/win');
-		}, 500);
+		}, 300);
 	}
 
 	render(props, state) {
@@ -77,9 +46,7 @@ export default class Game extends Component {
 				<div class={style.grid}>
 					{props.cards.map(card => (
 						<Card
-							disabled={false}
-							flipStatus={this.getCardFlipStatus(card)}
-							hiddenValue={card.rhyme}
+							rhymeValue={card.rhyme}
 							onClick={this.createCardClickListener(card)}
 							word={card.word}
 						/>

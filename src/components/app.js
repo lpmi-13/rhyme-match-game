@@ -22,11 +22,14 @@ function generateGridCards () {
 	const ay = data['ay'];
 	const ee = data['ee'];
 
-	const randoAy = shuffleArray(ay);
-					  
-	const randoEE = shuffleArray(ee);
+	shuffleArray(ay)
+	shuffleArray(ee);
 
-	return [...randoAy.slice(0,8), ...randoEE.slice(0,8)];
+	const randoArray = [...ay.slice(0, 8), ...ee.slice(0, 8)];
+
+	shuffleArray(randoArray);
+
+	return [...randoArray];
 }
 
 export default class App extends Component {

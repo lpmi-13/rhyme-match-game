@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  font-size: 3rem;
+  font-size: 1.6rem;
   backface-visibility: hidden;
   border: 1px solid #864601;
 
@@ -33,13 +33,4 @@
 
 .card .back {
   background: white;
-}
-
-.card[data-flip-status="FLIPPED"], .card[data-flip-status="MATCHED"], .back{
-  transform: rotateY(180deg);
-}
-
-.card[data-flip-status="MATCHED"] .back{
-  opacity: 0.2;
-  border: 3px dashed red;
 }
