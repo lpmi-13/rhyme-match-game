@@ -12,9 +12,10 @@ export default class Game extends Component {
 		score: 0
 	};
 
-    getCardRhymeStatus = ({ rhyme }) => {
-      const { rhymeToMatch } = this.state;
-      if (rhymeToMatch === rhyme) {
+    getCardRhymeStatus = ({ word }) => {
+	  const { correctCards } = this.state;
+	  console.log(correctCards);
+      if (correctCards[word]) {
         return 'MATCHED';
       }
       return 'DEFAULT';
@@ -29,7 +30,7 @@ export default class Game extends Component {
 
 		if (card.rhyme === rhymeToMatch) {
 			this.setState({
-				correctCards: [ ...correctCards, card ],
+				correctCards: [ ...correctCards, card.word ],
 				score: score + 1
 			});
 		} else {
@@ -40,9 +41,9 @@ export default class Game extends Component {
 			this.handleWin();
 		}
 
-                if (wrongCards.length >= 3) {
-                        this.handleLoss();
-                }
+        if (wrongCards.length >= 3) {
+                this.handleLoss();
+        }
 	}
 
 	handleWin = () => {
