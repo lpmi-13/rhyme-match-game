@@ -35,11 +35,12 @@
   background: white;
 }
 
-.card[data-flip-status="FLIPPED"], .card[data-flip-status="MATCHED"], .back{
+.card[data-rhyme-status="FLIPPED"], .card[data-rhyme-status="MATCHED"], .back{
   transform: rotateY(180deg);
 }
 
-.card[data-flip-status="MATCHED"] .back{
+.card[data-rhyme-status="MATCHED"] .back{
   opacity: 0.2;
-  border: 3px dashed red;
+  color: green;
+  border: 3px dashed green;
 }

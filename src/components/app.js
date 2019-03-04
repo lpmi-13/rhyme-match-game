@@ -3,6 +3,7 @@ import { Router } from 'preact-router';
 
 import Home from '../routes/home';
 import Game from '../routes/game';
+import Loss from '../routes/loss';
 import Win from '../routes/win';
 
 import * as data from '../data/words.json';
@@ -39,6 +40,7 @@ export default class App extends Component {
 				<Router onChange={this.handleRoute}>
 					<Home path="/" />
 					<Game path="/game" cards={generateGridCards()} />
+					<Loss path="/loss" />
 					<Win path="/win" />
 				</Router>
 			</div>

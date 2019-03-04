@@ -12,18 +12,15 @@ export default class Game extends Component {
 		score: 0
 	};
 
-        getCardRhymeStatus = ({ rhyme }) => {
-          const { rhymeToMatch } = this.state;
-
-          if (rhymeToMatch === rhyme) {
-            return 'MATCHED';
-          }
-
-          return 'DEFAULT';
-        }
+    getCardRhymeStatus = ({ rhyme }) => {
+      const { rhymeToMatch } = this.state;
+      if (rhymeToMatch === rhyme) {
+        return 'MATCHED';
+      }
+      return 'DEFAULT';
+    }
 
 	createCardClickListener = card => () => {
-		console.log(card);
 		this.checkCardStatus(card);
 	}
 	
@@ -69,7 +66,7 @@ export default class Game extends Component {
 						<Card
 							rhymeValue={card.rhyme}
 							onClick={this.createCardClickListener(card)}
-                                                        rhymeStatus={this.getCardRhymeStatus(card)}
+                            rhymeStatus={this.getCardRhymeStatus(card)}
 							word={card.word}
 						/>
 					))}
