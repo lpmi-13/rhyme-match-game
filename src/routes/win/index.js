@@ -12,7 +12,6 @@ export default class Win extends Component{
 		return (
 			<div class={style.win}>
 				<div class={style.head}>
-					<div class={style.emoji}>checkmark</div>
 					<div>You won!</div>
 				</div>
 				<button class={style.button} onClick={this.startGame}>New Game</button>

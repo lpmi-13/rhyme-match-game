@@ -6,6 +6,8 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
     "build": "preact build --template src/index.html",
+    "build-preact": "rm -rf ./build && npm run build:client",
+    "build:client": "NODE_ENV=production webpack --config webpack.config.js -p",
     "serve": "npm run build && preact serve",
     "dev": "preact watch -p 5000",
     "lint": "eslint src",
@@ -19,13 +21,19 @@
     "build/*"
   ],
   "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "babel-jest": "^24.1.0",
+    "babel-preset-preact": "^1.1.0",
+    "enzyme-adapter-preact": "^0.2.0",
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "identity-obj-proxy": "^3.0.0",
     "if-env": "^1.0.0",
     "jest": "^21.2.1",
     "preact-cli": "^2.1.0",
+    "preact-compat-enzyme": "^0.2.5",
     "preact-render-spy": "^1.2.1",
+    "preact-test-utils": "^0.1.4",
     "prettier": "^1.16.4"
   },
   "dependencies": {

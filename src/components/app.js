@@ -30,7 +30,10 @@ function generateGridCards () {
 
 	shuffleArray(randoArray);
 
-	return [...randoArray];
+	const deck = [...randoArray]
+		.map((card, idx) => ({ key: idx, values: card }));
+	console.log({deck});
+	return deck;
 }
 
 export default class App extends Component {
@@ -38,8 +41,8 @@ export default class App extends Component {
 		return (
 			<div id="app">
 				<Router onChange={this.handleRoute}>
-					<Home path="/" />
-					<Game path="/game" cards={generateGridCards()} />
+					<Home exact path="/" />
+					<Game path="/game" deck={generateGridCards()} />
 					<Loss path="/loss" />
 					<Win path="/win" />
 				</Router>

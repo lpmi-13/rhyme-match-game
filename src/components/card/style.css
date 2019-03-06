@@ -31,16 +31,18 @@
   transform: rotateY(0deg);
 }
 
-.card .back {
-  background: white;
-}
-
-.card[data-rhyme-status="FLIPPED"], .card[data-rhyme-status="MATCHED"], .back{
+.card[data-rhyme-status="FLIPPED"], .card[data-rhyme-status="MATCHED"], .card[data-rhyme-status="UNMATCHED"], .back{
   transform: rotateY(180deg);
 }
 
 .card[data-rhyme-status="MATCHED"] .back{
   opacity: 0.2;
-  color: green;
+  background: green;
   border: 3px dashed green;
+}
+
+.card[data-rhyme-status="UNMATCHED"] .back {
+  opacity: 0.2;
+  background: red;
+  border: 3px dashed red;
 }

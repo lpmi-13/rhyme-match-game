@@ -6,54 +6,85 @@ import style from './style';
 
 export default class Game extends Component {
 	state = {
-		correctCards: [],
-		wrongCards: [],
+		correctCards: {},
+		flippedCards: {},
 		rhymeToMatch: 'ay',
-		score: 0
+		score: 0,
+		wrongCards: {},
 	};
 
-    getCardRhymeStatus = ({ word }) => {
-	  const { correctCards } = this.state;
-	  console.log(correctCards);
-      if (correctCards[word]) {
-        return 'MATCHED';
+    getCardRhymeStatus = ({ key, values }) => {
+
+      const { correctCards, flippedCards, wrongCards } = this.state;
+      if (correctCards[values.word]) {
+	return 'MATCHED';
+      }
+      
+      if (wrongCards[values.word]) {
+	return 'UNMATCHED';
+      }
+
+      console.log(flippedCards);
+      if (flippedCards[key] ){
+	return 'FLIPPED'
       }
       return 'DEFAULT';
     }
 
-	createCardClickListener = card => () => {
-		this.checkCardStatus(card);
-	}
+    createCardClickListener = item => () => {
+      this.checkCardStatus(item);
+    }
 	
-	checkCardStatus = card => {
-		const { correctCards, rhymeToMatch, score, wrongCards } = this.state;
+	checkCardStatus = ({ key, values }) => {
+		const { correctCards, flippedCards, rhymeToMatch, score, wrongCards } = this.state;
 
-		if (card.rhyme === rhymeToMatch) {
+		this.setState({ flippedCards: { ...flippedCards, key } });
+		if (values.rhyme === rhymeToMatch) {
 			this.setState({
-				correctCards: [ ...correctCards, card.word ],
+				correctCards: { ...correctCards, [values.word] : true },
 				score: score + 1
+			}, () => {
+				this.countScore();
 			});
 		} else {
-			this.setState({ wrongCards: [ ...wrongCards, card ] });
+			this.setState({ wrongCards: { ...wrongCards, [values.word] : true },
+			}, ()=> {
+				 this.countMistakes();
+			});
 		}
 
-		if (correctCards.length >= 8) {
+	}
+
+        countScore = () => {
+		const { score } = this.state;
+		if (score === 8) {
 			this.handleWin();
 		}
+	}
 
-        if (wrongCards.length >= 3) {
-                this.handleLoss();
-        }
+	countMistakes = () => {
+		const { wrongCards } = this.state;
+		if (Object.keys(wrongCards).length >= 3) {
+			this.handleLoss();
+		}
 	}
 
 	handleWin = () => {
 		setTimeout(() => {
+			this.setState({
+				correctCards: {},
+				flippedCards: {},
+			});
 			route('/win');
 		}, 300);
 	}
 
         handleLoss = () => {
-                setTimeout(() => {
+		setTimeout(() => {
+			this.setState({
+				correctCards: {},
+				flippedCards: {},
+			});
                         route('/loss');
                 }, 300);
         }
@@ -63,12 +94,11 @@ export default class Game extends Component {
 			<div class={style.game}>
 				<header class={style.score}>Score: {state.score}</header>
 				<div class={style.grid}>
-					{props.cards.map(card => (
+					{props.deck.map(item => (
 						<Card
-							rhymeValue={card.rhyme}
-							onClick={this.createCardClickListener(card)}
-                            rhymeStatus={this.getCardRhymeStatus(card)}
-							word={card.word}
+						onClick={this.createCardClickListener(item)}
+						rhymeStatus={this.getCardRhymeStatus(item)}
+						word={item.values.word}
 						/>
 					))}
 				</div>

@@ -11,7 +11,7 @@ export default function Card({
 			<button class={style.front} onClick={onClick}>
 				{word}
 			</button>
-			<div class={style.back}>{`checkmark`}</div>
+			<div class={style.back}></div>
 		</div>
 	);
 }

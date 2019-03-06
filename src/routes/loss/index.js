@@ -12,7 +12,6 @@ export default class Loss extends Component{
 		return (
 			<div class={style.win}>
 				<div class={style.head}>
-					<div class={style.emoji}>bad</div>
 					<div>You lost...</div>
 				</div>
 				<button class={style.button} onClick={this.startGame}>New Game</button>
