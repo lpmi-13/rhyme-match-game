@@ -92,7 +92,10 @@ export default class Game extends Component {
 	render(props, state) {
 		return (
 			<div class={style.game}>
-				<header class={style.score}>Score: {state.score}</header>
+			  <div class={style.info}>
+			    <header class={style.match}>Rhyme: {state.rhymeToMatch}</header>
+			  	<header class={style.score}>Score: {state.score}</header>
+			  </div>
 				<div class={style.grid}>
 					{props.deck.map(item => (
 						<Card
