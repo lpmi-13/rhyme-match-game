@@ -17,23 +17,22 @@ function shuffleArray(array) {
 }
 
 /**
- * helper function to generate a schuffled array of cards
+ * helper function to generate a shuffled array of cards
  */
 function generateGridCards () {
 	const ay = data.ay;
 	const ee = data.ee;
 
-	shuffleArray(ay)
-	shuffleArray(ee);
+	const shuffledAy = ay.sort(() => Math.random() - Math.random());
+	const shuffledEe = ee.sort(() => Math.random() - Math.random());
 
-	const randoArray = [...ay.slice(0, 8), ...ee.slice(0, 8)];
+	const randoArray = [...shuffledAy.slice(0, 8), ...shuffledEe.slice(0, 8)];
 
-	shuffleArray(randoArray);
-
-	const deck = [...randoArray]
+	console.log({randoArray});
+	const shuffledRando = randoArray.sort(() => Math.random() - Math.random());
+    console.log({ shuffledRando });
+	return [...shuffledRando]
 		.map((card, idx) => ({ key: idx, values: card }));
-	console.log({deck});
-	return deck;
 }
 
 export default class App extends Component {
@@ -42,7 +41,7 @@ export default class App extends Component {
 			<div id="app">
 				<Router onChange={this.handleRoute}>
 					<Home exact path="/" />
-					<Game path="/game" deck={generateGridCards()} />
+					<Game path="/game" />
 					<Loss path="/loss" />
 					<Win path="/win" />
 				</Router>

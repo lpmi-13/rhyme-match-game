@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-    "build": "preact build --template src/index.html",
+    "build": "rm -rf ./build && preact build --template src/index.html -p --json",
     "build-preact": "rm -rf ./build && npm run build:client",
     "build:client": "NODE_ENV=production webpack --config webpack.config.js -p",
     "serve": "npm run build && preact serve",

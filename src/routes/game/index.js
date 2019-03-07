@@ -4,9 +4,28 @@ import { route } from 'preact-router';
 import Card from '../../components/card';
 import style from './style';
 
+import * as data from '../../data/words.json';
+
+function generateGridCards() {
+	const ay = data.ay;
+	const ee = data.ee;
+
+	const shuffledAy = ay.sort(() => Math.random() - Math.random());
+	const shuffledEe = ee.sort(() => Math.random() - Math.random());
+
+	const randoArray = [...shuffledAy.slice(0, 8), ...shuffledEe.slice(0, 8)];
+
+	console.log({randoArray});
+	const shuffledRando = randoArray.sort(() => Math.random() - Math.random());
+		console.log({ shuffledRando });
+	return [...shuffledRando]
+		.map((card, idx) => ({ key: idx, values: card }));
+}
+
 export default class Game extends Component {
 	state = {
 		correctCards: {},
+		deck: generateGridCards(),
 		flippedCards: {},
 		rhymeToMatch: 'ay',
 		score: 0,
@@ -87,8 +106,8 @@ export default class Game extends Component {
 			});
                         route('/loss');
                 }, 300);
-        }
-
+				}
+				
 	render(props, state) {
 		return (
 			<div class={style.game}>
@@ -97,7 +116,7 @@ export default class Game extends Component {
 			  	<header class={style.score}>Score: {state.score}</header>
 			  </div>
 				<div class={style.grid}>
-					{props.deck.map(item => (
+					{state.deck.map(item => (
 						<Card
 						onClick={this.createCardClickListener(item)}
 						rhymeStatus={this.getCardRhymeStatus(item)}
