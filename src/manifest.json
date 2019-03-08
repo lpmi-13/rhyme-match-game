@@ -1,6 +1,6 @@
 {
-  "name": "Match Game",
-  "short_name": "Match Game",
+  "name": "Rhyme Game",
+  "short_name": "Rhyme Game",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",

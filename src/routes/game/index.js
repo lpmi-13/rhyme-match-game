@@ -6,20 +6,34 @@ import style from './style';
 
 import * as data from '../../data/words.json';
 
-function generateGridCards() {
+function collectData() {
 	const ay = data.ay;
 	const ee = data.ee;
 
 	const shuffledAy = ay.sort(() => Math.random() - Math.random());
 	const shuffledEe = ee.sort(() => Math.random() - Math.random());
 
-	const randoArray = [...shuffledAy.slice(0, 8), ...shuffledEe.slice(0, 8)];
+	return [shuffledAy, shuffledEe];
+}
 
-	console.log({randoArray});
+function generateGridCards() {
+	const [shuffledAy, shuffledEe] = collectData();
+
+	const randoArray = [...shuffledAy.slice(0, 6), ...shuffledEe.slice(0, 6)];
+
 	const shuffledRando = randoArray.sort(() => Math.random() - Math.random());
-		console.log({ shuffledRando });
+
 	return [...shuffledRando]
 		.map((card, idx) => ({ key: idx, values: card }));
+}
+
+function getRandomRhyme() {
+	const [shuffledAy, shuffledEe] = collectData();
+
+	const rhymes = [...shuffledAy.slice(-1), ...shuffledEe.slice(-1)];
+	const randoRhymes = rhymes.sort(() => Math.random() - Math.random());
+
+	return randoRhymes[0];
 }
 
 export default class Game extends Component {
@@ -27,38 +41,38 @@ export default class Game extends Component {
 		correctCards: {},
 		deck: generateGridCards(),
 		flippedCards: {},
-		rhymeToMatch: 'ay',
+		rhymeToMatch: getRandomRhyme(),
 		score: 0,
 		wrongCards: {},
 	};
 
-    getCardRhymeStatus = ({ key, values }) => {
+  getCardRhymeStatus = ({ key, values }) => {
 
-      const { correctCards, flippedCards, wrongCards } = this.state;
-      if (correctCards[values.word]) {
-	return 'MATCHED';
-      }
+    const { correctCards, flippedCards, wrongCards } = this.state;
+    if (correctCards[values.word]) {
+	    return 'MATCHED';
+    }
       
-      if (wrongCards[values.word]) {
-	return 'UNMATCHED';
-      }
-
-      console.log(flippedCards);
-      if (flippedCards[key] ){
-	return 'FLIPPED'
-      }
-      return 'DEFAULT';
+    if (wrongCards[values.word]) {
+	    return 'UNMATCHED';
     }
 
-    createCardClickListener = item => () => {
-      this.checkCardStatus(item);
+    if (flippedCards[key] ){
+	    return 'FLIPPED'
     }
+		
+		return 'DEFAULT';
+  }
+
+  createCardClickListener = item => () => {
+    this.checkCardStatus(item);
+  }
 	
 	checkCardStatus = ({ key, values }) => {
 		const { correctCards, flippedCards, rhymeToMatch, score, wrongCards } = this.state;
 
 		this.setState({ flippedCards: { ...flippedCards, key } });
-		if (values.rhyme === rhymeToMatch) {
+		if (values.rhyme === rhymeToMatch.rhyme) {
 			this.setState({
 				correctCards: { ...correctCards, [values.word] : true },
 				score: score + 1
@@ -71,12 +85,11 @@ export default class Game extends Component {
 				 this.countMistakes();
 			});
 		}
-
 	}
 
-        countScore = () => {
+  countScore = () => {
 		const { score } = this.state;
-		if (score === 8) {
+		if (score === 6) {
 			this.handleWin();
 		}
 	}
@@ -98,21 +111,21 @@ export default class Game extends Component {
 		}, 300);
 	}
 
-        handleLoss = () => {
-		setTimeout(() => {
-			this.setState({
-				correctCards: {},
-				flippedCards: {},
-			});
-                        route('/loss');
-                }, 300);
-				}
+  handleLoss = () => {
+	  setTimeout(() => {
+	  	this.setState({
+	  		correctCards: {},
+	  		flippedCards: {},
+	  	});
+      route('/loss');
+    }, 300);
+	}
 				
 	render(props, state) {
 		return (
 			<div class={style.game}>
 			  <div class={style.info}>
-			    <header class={style.match}>Rhyme: {state.rhymeToMatch}</header>
+			    <header class={style.match}>Rhymes with:<br/> {state.rhymeToMatch.word}</header>
 			  	<header class={style.score}>Score: {state.score}</header>
 			  </div>
 				<div class={style.grid}>
@@ -127,5 +140,4 @@ export default class Game extends Component {
 			</div>
 		);
 	}
-
 }
