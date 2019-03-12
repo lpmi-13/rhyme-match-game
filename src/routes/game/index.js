@@ -124,7 +124,7 @@ export default class Game extends Component {
 	render(props, state) {
 		return (
 			<div class={style.game}>
-			  <div class={style.info}>
+			  <div>
 			    <header class={style.match}>Rhymes with:<br/> {state.rhymeToMatch.word}</header>
 			  	<header class={style.score}>Score: {state.score}</header>
 			  </div>
