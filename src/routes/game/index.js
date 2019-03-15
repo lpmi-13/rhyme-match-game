@@ -1,12 +1,12 @@
-import { Component } from 'preact';
+import { h, Component } from 'preact';
 import { route } from 'preact-router';
 
 import Card from '../../components/card';
-import style from './style';
+import style from './style.css';
 
 import * as data from '../../data/words.json';
 
-function collectData() {
+export function collectData() {
 	const ay = data.ay;
 	const ee = data.ee;
 
@@ -16,7 +16,7 @@ function collectData() {
 	return [shuffledAy, shuffledEe];
 }
 
-function generateGridCards() {
+export function generateGridCards() {
 	const [shuffledAy, shuffledEe] = collectData();
 
 	const randoArray = [...shuffledAy.slice(0, 6), ...shuffledEe.slice(0, 6)];
@@ -27,7 +27,7 @@ function generateGridCards() {
 		.map((card, idx) => ({ key: idx, values: card }));
 }
 
-function getRandomRhyme() {
+export function getRandomRhyme() {
 	const [shuffledAy, shuffledEe] = collectData();
 
 	const rhymes = [...shuffledAy.slice(-1), ...shuffledEe.slice(-1)];
