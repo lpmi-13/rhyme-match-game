@@ -6,20 +6,31 @@ import style from './style.css';
 
 import * as data from '../../data/words.json';
 
-export function collectData() {
-	const ay = data.ay;
-	const ee = data.ee;
+export function collectData(rhyme) {
+	const rhymeArray = ['ay', 'ee', 'o', 'ou', 'iy'];
+	const rhymeIndex = rhymeArray.indexOf(rhyme);
 
-	const shuffledAy = ay.sort(() => Math.random() - Math.random());
-	const shuffledEe = ee.sort(() => Math.random() - Math.random());
+	const firstRhymeArray = data[rhyme];
 
-	return [shuffledAy, shuffledEe];
+  // get a rhyme that's not the one we selected
+	let number = rhymeIndex;
+	while (number === rhymeIndex) {
+		number = Math.floor(Math.random() * Math.floor(rhymeArray.length));
+	}
+
+	const secondRhymeSound = rhymeArray[number];
+	const secondRhymeArray = data[secondRhymeSound];
+
+	const shuffledFirst = firstRhymeArray.sort(() => Math.random() - Math.random());
+	const shuffledSecond = secondRhymeArray.sort(() => Math.random() - Math.random());
+
+	return [shuffledFirst.slice(0, 7), shuffledSecond.slice(0, 7)];
 }
 
-export function generateGridCards() {
-	const [shuffledAy, shuffledEe] = collectData();
+export function generateGridCards(rhyme) {
+	const [shuffledFirst, shuffledSecond] = collectData(rhyme);
 
-	const randoArray = [...shuffledAy.slice(0, 6), ...shuffledEe.slice(0, 6)];
+	const randoArray = [...shuffledFirst.slice(0, 6), ...shuffledSecond.slice(0, 6)];
 
 	const shuffledRando = randoArray.sort(() => Math.random() - Math.random());
 
@@ -27,21 +38,12 @@ export function generateGridCards() {
 		.map((card, idx) => ({ key: idx, values: card }));
 }
 
-export function getRandomRhyme() {
-	const [shuffledAy, shuffledEe] = collectData();
-
-	const rhymes = [...shuffledAy.slice(-1), ...shuffledEe.slice(-1)];
-	const randoRhymes = rhymes.sort(() => Math.random() - Math.random());
-
-	return randoRhymes[0];
-}
-
 export default class Game extends Component {
 	state = {
 		correctCards: {},
-		deck: generateGridCards(),
+		deck: generateGridCards(this.props.rhyme.rhyme),
 		flippedCards: {},
-		rhymeToMatch: getRandomRhyme(),
+		rhymeToMatch: this.props.rhyme,
 		score: 0,
 		wrongCards: {},
 	};
@@ -122,6 +124,7 @@ export default class Game extends Component {
 	}
 				
 	render(props, state) {
+
 		return (
 			<div class={style.game}>
 			  <div>

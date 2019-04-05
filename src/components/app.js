@@ -8,14 +8,21 @@ import Select from '../routes/select';
 import Win from '../routes/win';
 
 export default class App extends Component {
+
+	state = {
+		selectedRhyme: '',
+	};
+
+    selectRhyme = selectedRhyme => this.setState({ selectedRhyme });
+
 	render() {
 		return (
 			<div id="app">
 				<Router onChange={this.handleRoute}>
 					<Home exact path="/" />
-					<Game path="/game" />
+					<Game path="/game" rhyme={this.state.selectedRhyme} />
 					<Loss path="/loss" />
-					<Select path="/select" />
+					<Select path="/select" onSelectRhyme={this.selectRhyme} />
 					<Win path="/win" />
 				</Router>
 			</div>

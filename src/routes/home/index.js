@@ -5,17 +5,17 @@ import style from './style.css';
 
 
 export default class Home extends Component{
-	selectRhyme = () => {
+	select = () => {
 		route('/select');
 	};
-	
+
 	render () {
           return (
         	<div class={style.home}>
         	  <div class={style.head}>
         	    <h2>Match Game</h2>
             </div>
-        	  <button class={style.button} onClick={this.selectRhyme}>New Game</button>
+						<button class={style.button} onClick={this.select}>New Game</button>
         	</div>
           )
 	}
