@@ -11,7 +11,6 @@
     {"word": "delay", "rhyme": "ay"},
     {"word": "display", "rhyme": "ay"},
     {"word": "dismay", "rhyme": "ay"},
-    {"word": "say", "rhyme": "ay"},
     {"word": "relay", "rhyme": "ay"},
     {"word": "repay", "rhyme": "ay"},
     {"word": "neigh", "rhyme": "ay"},
@@ -42,7 +41,6 @@
     {"word": "me", "rhyme": "ee"},
     {"word": "we", "rhyme": "ee"},
     {"word": "she", "rhyme": "ee"},
-    {"word": "be", "rhyme": "ee"},
     {"word": "sea", "rhyme": "ee"},
     {"word": "plea", "rhyme": "ee"},
     {"word": "key", "rhyme": "ee"},
@@ -64,7 +62,6 @@
     {"word": "foe", "rhyme": "o"},
     {"word": "grow", "rhyme": "o"},
     {"word": "sow", "rhyme": "o"},
-    {"word": "go", "rhyme": "o"},
     {"word": "crow", "rhyme": "o"},
     {"word": "hoe", "rhyme": "o"},
     {"word": "oh", "rhyme": "o"},
@@ -91,11 +88,9 @@
     {"word": "few", "rhyme": "ou"},
     {"word": "blue", "rhyme": "ou"},
     {"word": "shoe", "rhyme": "ou"},
-    {"word": "grew", "rhyme": "ou"},
-    {"word": "you", "rhyme": "ou"}
+    {"word": "grew", "rhyme": "ou"}
   ],
   "iy": [
-    {"word": "why", "rhyme": "iy"},
     {"word": "cry", "rhyme": "iy"},
     {"word": "pry", "rhyme": "iy"},
     {"word": "shy", "rhyme": "iy"},

@@ -108,6 +108,7 @@
     "postcss-loader": "^2.0.3",
     "preact-cli": "^2.2.1",
     "preact-jsx-chai": "^2.2.1",
+    "prettier": "^1.16.4",
     "raw-loader": "^0.5.1",
     "regenerator-runtime": "^0.10.3",
     "replace-bundle-webpack-plugin": "^1.0.0",
@@ -118,7 +119,7 @@
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.0",
     "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.4.4"
+    "webpack-dev-server": "^3.1.12"
   },
   "dependencies": {
     "if-env": "^1.0.4",
@@ -128,6 +129,6 @@
     "preact-router": "^2.5.1",
     "promise-polyfill": "^7.0.1",
     "proptypes": "^1.0.0",
-    "serve": "^6.0.0"
+    "serve": "^7.1.3"
   }
 }
