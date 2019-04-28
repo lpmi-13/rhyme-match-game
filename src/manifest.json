@@ -1,6 +1,6 @@
 {
-  "name": "Rhyme Game",
-  "short_name": "Rhyme Game",
+  "name": "Rhymez",
+  "short_name": "Rhymez",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
