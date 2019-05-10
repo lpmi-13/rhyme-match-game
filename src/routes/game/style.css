@@ -11,20 +11,20 @@
 	justify-content: space-between;
 	align-items: center;
 	padding-top: 15px;
-	max-height: 568px;
+	max-height: 95%;
 }
 
 .match {
 	text-align: center;
-	font-size: 1.5rem;
-	line-height: 2rem;
+	font-size: 1rem;
+	line-height: 1.2rem;
 }
 
 .score {
 	text-align: center;
-	font-size: 2rem;
+	font-size: 1rem;
 	position: relative;
-	top: 30px;
+	top: 20%;
 }
 
 
@@ -38,8 +38,8 @@
 
 .grid {
 	display: grid;
-	grid-template-columns: repeat(3, 90px);
-	grid-template-rows: repeat(4, 90px);
+	grid-template-columns: repeat(3, 110px);
+	grid-template-rows: repeat(4, 110px);
 	grid-gap: 6px;
 	position: absolute;
 	bottom: 0px;

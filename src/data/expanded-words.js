@@ -198,7 +198,7 @@ const wordList = {
     { rhyme: 'aj', word: 'fly' },
     { rhyme: 'aj', word: 'guy' },
     { rhyme: 'aj', word: 'high' },
-    { rhyme: 'aj', word: 'i' },
+    { rhyme: 'aj', word: 'I' },
     { rhyme: 'aj', word: 'identify' },
     { rhyme: 'aj', word: 'lie' },
     { rhyme: 'aj', word: 'supply' },
