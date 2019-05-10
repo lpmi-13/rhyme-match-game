@@ -2,14 +2,17 @@
 import { h, Component } from 'preact';
 import { route } from 'preact-router';
 import style from './style.css';
+import data from '../../data/expanded-words.js';
 
-const rhymeSelections = [
-	{"word": "say", "rhyme": "ay"},
-	{"word": "be", "rhyme": "ee"},
-	{"word": "go", "rhyme": "o"},
-	{"word": "you", "rhyme": "ou"},
-	{"word": "why", "rhyme": "iy"},
-];
+const rhymez = Object.keys(data);
+const selectedIndex = (rhymeList) => Math.floor(Math.random() * Math.floor(rhymeList.length));
+
+const rhymeSelections = rhymez.map(rhyme => {
+	const rhymezArray = data[rhyme];
+	const randomIndex = selectedIndex(rhymezArray);
+	const selectedWord = rhymezArray[randomIndex];
+	return {"word": `${selectedWord.word}`, "rhyme": `${rhyme}`}
+});
 
 export default class Select extends Component {
 

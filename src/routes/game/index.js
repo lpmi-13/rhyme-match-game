@@ -4,10 +4,10 @@ import { route } from 'preact-router';
 import Card from '../../components/card';
 import style from './style.css';
 
-import * as data from '../../data/words.json';
+import data from '../../data/expanded-words.js';
 
 export function collectData(rhyme) {
-	const rhymeArray = ['ay', 'ee', 'o', 'ou', 'iy'];
+	const rhymeArray = Object.keys(data);
 	const rhymeIndex = rhymeArray.indexOf(rhyme);
 
 	const firstRhymeArray = data[rhyme];
