@@ -7,7 +7,7 @@ import data from '../../data/expanded-words.js';
 const rhymez = Object.keys(data);
 const selectedIndex = (rhymeList) => Math.floor(Math.random() * Math.floor(rhymeList.length));
 
-const rhymeSelections = rhymez.map(rhyme => {
+const rhymeSelections = () => rhymez.map(rhyme => {
 	const rhymezArray = data[rhyme];
 	const randomIndex = selectedIndex(rhymezArray);
 	const selectedWord = rhymezArray[randomIndex];
@@ -15,6 +15,10 @@ const rhymeSelections = rhymez.map(rhyme => {
 });
 
 export default class Select extends Component {
+
+  state = {
+		rhymeSelections: rhymeSelections(),
+	}
 
 	startGame = (selection) => {
     this.props.onSelectRhyme(selection);
@@ -28,7 +32,7 @@ export default class Select extends Component {
 					<h2>Choose a rhyme</h2>
 				</div>
 				<div class={style.rhymeSection}>
-				{rhymeSelections.map((selection) =>
+				{this.state.rhymeSelections.map((selection) =>
 					<button class={style.button} onClick={() => this.startGame(selection)}>{selection.word}</button>
 				)}
 				</div>
