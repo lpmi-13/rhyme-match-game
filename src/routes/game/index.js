@@ -3,45 +3,12 @@ import { route } from 'preact-router';
 
 import Card from '../../components/card';
 import style from './style.css';
-
-import data from '../../data/expanded-words.js';
-
-export function collectData(rhyme) {
-	const rhymeArray = Object.keys(data);
-	const rhymeIndex = rhymeArray.indexOf(rhyme);
-
-	const firstRhymeArray = data[rhyme];
-
-  // get a rhyme that's not the one we selected
-	let number = rhymeIndex;
-	while (number === rhymeIndex) {
-		number = Math.floor(Math.random() * Math.floor(rhymeArray.length));
-	}
-
-	const secondRhymeSound = rhymeArray[number];
-	const secondRhymeArray = data[secondRhymeSound];
-
-	const shuffledFirst = firstRhymeArray.sort(() => Math.random() - Math.random());
-	const shuffledSecond = secondRhymeArray.sort(() => Math.random() - Math.random());
-
-	return [shuffledFirst.slice(0, 7), shuffledSecond.slice(0, 7)];
-}
-
-export function generateGridCards(rhyme) {
-	const [shuffledFirst, shuffledSecond] = collectData(rhyme);
-
-	const randoArray = [...shuffledFirst.slice(0, 6), ...shuffledSecond.slice(0, 6)];
-
-	const shuffledRando = randoArray.sort(() => Math.random() - Math.random());
-
-	return [...shuffledRando]
-		.map((card, idx) => ({ key: idx, values: card }));
-}
+import { generateGridCards } from '../../utils';
 
 export default class Game extends Component {
 	state = {
 		correctCards: {},
-		deck: generateGridCards(this.props.rhyme.rhyme),
+		deck: generateGridCards(this.props.rhyme),
 		flippedCards: {},
 		rhymeToMatch: this.props.rhyme,
 		score: 0,

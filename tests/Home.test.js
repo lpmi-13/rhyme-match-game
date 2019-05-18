@@ -5,7 +5,7 @@ import Home from '../src/routes/home';
 
 describe('the Home component', () => {
 
-        let scratch;
+  let scratch;
 
 	beforeAll( () => {
 		scratch = document.createElement('div');
