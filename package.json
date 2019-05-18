@@ -9,7 +9,7 @@
     "serve": "npm run build && preact serve",
     "dev": "preact watch -p 5000",
     "lint": "eslint src",
-    "prettier": "prettier --print-width 80 --no-semi --single-quote --trailing-comma es5 --write src/**/*.js",
+    "prettier": "prettier --print-width 80 --single-quote --trailing-comma es5 --write src/**/*.js",
     "test": "jest"
   },
   "engines": {

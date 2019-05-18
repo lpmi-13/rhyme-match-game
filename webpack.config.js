@@ -117,7 +117,7 @@ module.exports = {
 	plugins: ([
 		new webpack.NoEmitOnErrorsPlugin(),
 		new ExtractTextPlugin({
-			filename: 'style.css',
+			filename: '/style.css',
 			allChunks: true,
 			disable: ENV !== 'production'
 		}),

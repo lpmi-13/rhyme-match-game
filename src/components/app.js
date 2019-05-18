@@ -1,18 +1,18 @@
-import { h, Component } from 'preact'
-import { Router } from 'preact-router'
+import { h, Component } from 'preact';
+import { Router } from 'preact-router';
 
-import Home from '../routes/home'
-import Game from '../routes/game'
-import Loss from '../routes/loss'
-import Select from '../routes/select'
-import Win from '../routes/win'
+import Home from '../routes/home';
+import Game from '../routes/game';
+import Loss from '../routes/loss';
+import Select from '../routes/select';
+import Win from '../routes/win';
 
 export default class App extends Component {
   state = {
     selectedRhyme: '',
-  }
+  };
 
-  selectRhyme = selectedRhyme => this.setState({ selectedRhyme })
+  selectRhyme = selectedRhyme => this.setState({ selectedRhyme });
 
   render() {
     return (
@@ -25,6 +25,6 @@ export default class App extends Component {
           <Win path="/win" />
         </Router>
       </div>
-    )
+    );
   }
 }

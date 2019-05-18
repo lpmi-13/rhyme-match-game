@@ -510,6 +510,6 @@ const wordList = {
     { rhyme: 'ajz', word: 'size' },
     { rhyme: 'ajz', word: 'surprise' },
   ],
-}
+};
 
-export default wordList
+export default wordList;
