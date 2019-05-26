@@ -22,7 +22,7 @@ export default class Select extends Component {
 
 	startGame = (selection) => {
     this.props.onSelectRhyme(selection);
-		route('/game');
+		route('/rhyme-game/game');
 	};
 
 	render() {

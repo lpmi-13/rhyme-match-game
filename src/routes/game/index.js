@@ -76,7 +76,7 @@ export default class Game extends Component {
 				correctCards: {},
 				flippedCards: {},
 			});
-			route('/win');
+			route('/rhyme-game/win');
 		}, 300);
 	}
 
@@ -86,7 +86,7 @@ export default class Game extends Component {
 	  		correctCards: {},
 	  		flippedCards: {},
 	  	});
-      route('/loss');
+      route('/rhyme-game/loss');
     }, 300);
 	}
 				
