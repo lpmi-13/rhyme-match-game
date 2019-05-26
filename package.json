@@ -1,6 +1,7 @@
 {
   "private": false,
   "name": "rhymez",
+  "homepage": "https://www.grammarbuffet.org/rhyme-game/",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
