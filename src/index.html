@@ -16,9 +16,20 @@
 		<link rel="apple-touch-icon" sizes="144x144" href="<%= htmlWebpackPlugin.files.publicPath %>assets/icons/apple-touch-icon-144x144.png" />
 		<link rel="apple-touch-icon" sizes="152x152" href="<%= htmlWebpackPlugin.files.publicPath %>assets/icons/apple-touch-icon-152x152.png" />
 		<link rel="apple-touch-icon" sizes="180x180" href="<%= htmlWebpackPlugin.files.publicPath %>assets/icons/apple-touch-icon-180x180.png" />
-				<link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>manifest.json">
+		<link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>manifest.json">
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('/rhyme-game/sw.js', {scope: '/rhyme-game/'}).then(function(registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+                });
+            }
+        </script>
 		<% if (htmlWebpackPlugin.options.manifest.theme_color) { %>
-			<meta name="theme-color" content="<%= htmlWebpackPlugin.options.manifest.theme_color %>">
+		<meta name="theme-color" content="<%= htmlWebpackPlugin.options.manifest.theme_color %>">
 		<% } %>
 		<% for (var chunk of webpack.chunks) { %>
 		 <% if (chunk.names.length === 1 && chunk.names[0] === 'polyfills') continue; %>
@@ -37,5 +48,6 @@
 		}) %>
 		<script defer src="<%= htmlWebpackPlugin.files.chunks['bundle'].entry %>"></script>
 		<script>window.fetch||document.write('<script src="<%= htmlWebpackPlugin.files.chunks["polyfills"].entry %>"><\/script>')</script>
+
 	</body>
 </html>

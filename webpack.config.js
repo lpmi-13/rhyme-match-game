@@ -3,7 +3,6 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
-import OfflinePlugin from 'offline-plugin';
 import path from 'path';
 const ENV = process.env.NODE_ENV || 'development';
 
@@ -130,7 +129,15 @@ module.exports = {
 		}),
 		new CopyWebpackPlugin([
 			{ from: './manifest.json', to: './' },
-			{ from: './favicon.ico', to: './' }
+			{ from: './favicon.ico', to: './' },
+			{ from: './sw-template.js',
+			  to: './build/sw.js',
+			  transform(content) {
+				  return content
+					.toString()
+					.replace('var BASE_FILE_PATH = \'./\'', `var BASE_FILE_PATH = '${process.env.PUBLIC_PATH}'`);
+			  }
+			},
 		])
 	]).concat(ENV==='production' ? [
 		new webpack.optimize.UglifyJsPlugin({
@@ -162,23 +169,6 @@ module.exports = {
 				drop_console: true
 			}
 		}),
-
-		new OfflinePlugin({
-			relativePaths: false,
-			AppCache: false,
-			excludes: ['_redirects'],
-			ServiceWorker: {
-				events: true
-			},
-			cacheMaps: [
-				{
-					match: /.*/,
-					to: '/',
-					requestTypes: ['navigate']
-				}
-			],
-			publicPath: '/rhyme-game/'
-		})
 	] : []),
 
 	stats: { colors: true },
