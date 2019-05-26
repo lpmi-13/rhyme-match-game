@@ -177,7 +177,7 @@ module.exports = {
 					requestTypes: ['navigate']
 				}
 			],
-			publicPath: '/'
+			publicPath: '/rhyme-game/'
 		})
 	] : []),
 
