@@ -18,7 +18,7 @@ export default class App extends Component {
     return (
       <div id="app">
         <Router onChange={this.handleRoute}>
-          <Home exact path="/" />
+          <Home path="/" />
           <Game path="/game" rhyme={this.state.selectedRhyme} />
           <Loss path="/loss" />
           <Select path="/select" onSelectRhyme={this.selectRhyme} />
