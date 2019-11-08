@@ -6,7 +6,7 @@ import style from './style.css';
 
 export default class Home extends Component{
 	select = () => {
-		route('/rhyme-game/select');
+		route('/select');
 	};
 
 	render () {
