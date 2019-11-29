@@ -97,7 +97,7 @@ export default class Game extends Component {
 			<div class={style.game}>
 			  <div>
 			    <header class={style.match}>Rhymes with:<br/> {state.rhymeToMatch.word}</header>
-			  	<header class={style.score}>Score: {state.score}</header>
+			  	<header class={style.score}>Score: {state.score} / 6</header>
 			  </div>
 				<div class={style.grid}>
 					{state.deck.map(item => (
