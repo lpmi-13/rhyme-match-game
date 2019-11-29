@@ -102,14 +102,6 @@ module.exports = {
 			minify: { collapseWhitespace: true }
 		}),
 		new CopyWebpackPlugin([
-			{ from: './manifest.json',
-			  to: './build/manifest.json',
-		      transform(content) {
-				return content
-				  .toString()
-				  .replace('src": "/assets/', ENV==='production' ? 'src: "/BOOYAH/assets/' : 'src: "/assets/');
-			  }
-			},
 			{ from: './favicon.ico', to: './' },
 			{ from: './sw-template.js',
 			  to: './build/sw.js',

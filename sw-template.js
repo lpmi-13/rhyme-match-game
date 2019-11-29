@@ -16,13 +16,10 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('Service Worker Fetch...');
-
   event.respondWith(
     caches.match(event.request)
       .then(function(response) {
         if(response){
-          console.log('Serve from cache', response);
           return response;
         }
         return fetch(event.request)
