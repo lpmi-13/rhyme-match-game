@@ -1,8 +1,10 @@
 
 import { h, Component } from 'preact';
 import { route } from 'preact-router';
+
 import style from './style.css';
 import data from '../../data/expanded-words.js';
+import setupPath from '../../utils/setupPath';
 
 const rhymez = Object.keys(data);
 const selectedIndex = (rhymeList) => Math.floor(Math.random() * Math.floor(rhymeList.length));
@@ -22,7 +24,7 @@ export default class Select extends Component {
 
 	startGame = (selection) => {
     this.props.onSelectRhyme(selection);
-		route('/game');
+		route(`${setupPath()}/game`);
 	};
 
 	render() {

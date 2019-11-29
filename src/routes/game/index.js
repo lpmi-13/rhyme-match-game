@@ -4,6 +4,7 @@ import { route } from 'preact-router';
 import Card from '../../components/card';
 import style from './style.css';
 import { generateGridCards } from '../../utils';
+import setupPath from '../../utils/setupPath';
 
 export default class Game extends Component {
 	state = {
@@ -76,7 +77,7 @@ export default class Game extends Component {
 				correctCards: {},
 				flippedCards: {},
 			});
-			route('/win');
+			route(`${setupPath()}/win`);
 		}, 300);
 	}
 
@@ -86,7 +87,7 @@ export default class Game extends Component {
 	  		correctCards: {},
 	  		flippedCards: {},
 	  	});
-      route('/loss');
+      route(`${setupPath()}/loss`);
     }, 300);
 	}
 				

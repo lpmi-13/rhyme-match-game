@@ -1,12 +1,13 @@
 
 import { h, Component } from 'preact';
 import { route } from 'preact-router';
-import style from './style.css';
 
+import style from './style.css';
+import setupPath from '../../utils/setupPath';
 
 export default class Home extends Component{
 	select = () => {
-		route('/select');
+		route(`${setupPath()}/select`);
 	};
 
 	render () {
