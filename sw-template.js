@@ -1,4 +1,4 @@
-var cacheName = 'rhymez1';
+var cacheName = 'rhymez2';
 var BASE_FILE_PATH = './';
 var filesToCache = [
   BASE_FILE_PATH + 'favicon.ico',
