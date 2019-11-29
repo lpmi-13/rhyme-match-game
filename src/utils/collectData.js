@@ -1,4 +1,5 @@
 import data from '../data/expanded-words.js';
+import shuffle from './shuffle';
 
 export default function collectData(rhyme) {
   const rhymeArray = Object.keys(data);
@@ -19,12 +20,8 @@ export default function collectData(rhyme) {
   const secondRhymeSound = rhymeArray[number];
   const secondRhymeArray = data[secondRhymeSound];
 
-  const shuffledFirst = filteredFirstRhymeArray.sort(
-    () => Math.random() - Math.random()
-  );
-  const shuffledSecond = secondRhymeArray.sort(
-    () => Math.random() - Math.random()
-  );
+  const shuffledFirst = shuffle(filteredFirstRhymeArray);
+  const shuffledSecond = shuffle(secondRhymeArray);
 
   return [...shuffledFirst.slice(0, 6), ...shuffledSecond.slice(0, 6)];
 }
