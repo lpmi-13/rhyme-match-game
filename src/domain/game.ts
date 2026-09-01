@@ -28,6 +28,16 @@ export function createRhymeSelections(random: () => number = Math.random): Rhyme
   });
 }
 
+export function chooseNextRhyme(
+  previousRhyme: RhymeSound,
+  random: () => number = Math.random,
+): RhymeSound {
+  const availableRhymes = RHYME_SOUNDS.filter((rhyme) => rhyme !== previousRhyme);
+  const nextRhyme = availableRhymes[randomIndex(availableRhymes.length, random)];
+  if (!nextRhyme) throw new Error(`No rhyme is available after /${previousRhyme}/.`);
+  return nextRhyme;
+}
+
 export function createDeck(
   selection: RhymeSelection,
   random: () => number = Math.random,

@@ -1,10 +1,11 @@
 import { RHYME_SOUNDS, type RhymeSound } from '../data/words';
 import {
-  RhymeRound,
-  createRhymeSelections,
-  rhymeDescription,
   type CardSelectionResult,
+  chooseNextRhyme,
+  createRhymeSelections,
+  RhymeRound,
   type RhymeSelection,
+  rhymeDescription,
 } from '../domain/game';
 
 const RESULT_DELAY_MS = 650;
@@ -29,29 +30,23 @@ export class RhymeMatchApp {
   private renderLanding(): void {
     this.clearResultTimer();
     this.round = null;
-    document.body.className = '';
+    document.body.className = 'is-menu';
     document.title = 'Rhyme Match — English rhyme practice';
 
     this.root.innerHTML = `
-      <a class="skip-link" href="#main-content">Skip to rhyme choices</a>
-      <div class="site-shell">
-        <header class="site-header">
-          <a class="brand" href="#main-content" aria-label="Rhyme Match home">
+      <a class="skip-link" href="#rhyme-form">Skip to rhyme choices</a>
+      <div class="start-view">
+        <main class="start-screen" id="main-content">
+          <section class="start-panel" aria-labelledby="page-title">
+            <header class="start-title">
             <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span>Rhyme Match</span>
-          </a>
-          <span class="arcade-score" aria-hidden="true"><b>1UP</b> HI-SCORE&nbsp;00600</span>
-          <a class="header-link" href="#how-to-play">How to play <span aria-hidden="true">↓</span></a>
-        </header>
+              <div>
+                <p>English rhyme game</p>
+                <h1 id="page-title">Rhyme Match</h1>
+              </div>
+            </header>
 
-        <main class="landing-main" id="main-content">
-          <section class="hero-copy" aria-labelledby="page-title">
-            <p class="arcade-callout" aria-hidden="true">Round 01 // choose your ending</p>
-            <p class="eyebrow"><span>Arcade pronunciation practice</span> 30 rhyme families</p>
-            <h1 id="page-title">Hear the ending.<em>Match the rhyme.</em></h1>
-            <p class="hero-intro">
-              Build an instinct for English rhyme by finding six words with the same final sound.
-            </p>
+            <p class="start-instruction">Choose a reference word, then find the words with the same final sound.</p>
 
             <form id="rhyme-form">
               <label class="rhyme-select-label" for="rhyme-select">
@@ -61,49 +56,17 @@ export class RhymeMatchApp {
                 </select>
               </label>
 
-              <div class="start-row">
+              <div class="start-action">
+                <span>6 matches · 3 misses</span>
                 <button class="primary-action" type="submit">
-                  Start matching <span aria-hidden="true">▶</span>
+                  Start matching <span aria-hidden="true">→</span>
                 </button>
-                <span id="round-summary">12 cards · find 6 rhymes · 3 misses allowed</span>
               </div>
             </form>
+
+            <p class="start-source">Rhyme labels use broad IPA. Pronunciation can vary by accent.</p>
           </section>
-
-          <aside class="rhythm-board" aria-label="Selected rhyme preview">
-            <div class="board-topline">
-              <span><i aria-hidden="true"></i> Rhyme monitor</span>
-              <span>Final sound</span>
-            </div>
-            <div class="board-screen">
-              <p>Reference word</p>
-              <strong id="preview-word"></strong>
-              <span class="rhyme-sound" id="preview-sound"></span>
-              <span id="preview-name">Match the sound, not the spelling.</span>
-            </div>
-            <div class="beat-track" id="preview-beats" aria-hidden="true">
-              <i></i><i></i><i></i><i></i><i></i><i class="is-strong"></i>
-            </div>
-            <p class="board-note">Sound labels use broad IPA. Pronunciation can vary by accent.</p>
-          </aside>
         </main>
-
-        <section class="how-to" id="how-to-play" aria-labelledby="how-title">
-          <div>
-            <p class="section-number">01</p>
-            <h2 id="how-title">One ending.<br />Twelve words.</h2>
-          </div>
-          <ol>
-            <li><span>Choose</span><p>Pick a reference word from one of thirty rhyme families.</p></li>
-            <li><span>Compare</span><p>Say each word aloud and listen to its final stressed sound.</p></li>
-            <li><span>Match</span><p>Find all six rhymes before making three misses.</p></li>
-          </ol>
-        </section>
-
-        <footer class="site-footer">
-          <p>Made for focused English practice.</p>
-          <p>Thirty common rhyme families, shown with broad IPA endings.</p>
-        </footer>
       </div>
     `;
     resetScroll();
@@ -113,25 +76,17 @@ export class RhymeMatchApp {
     select.addEventListener('change', () => {
       if (isRhymeSound(select.value)) {
         this.selectedRhyme = select.value;
-        this.updatePreview();
       }
     });
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       this.startRound(this.selectionFor(this.selectedRhyme));
     });
-    this.updatePreview();
   }
 
   private rhymeOption(selection: RhymeSelection): string {
     const selected = selection.rhyme === this.selectedRhyme ? ' selected' : '';
     return `<option value="${escapeHtml(selection.rhyme)}"${selected}>${escapeHtml(selection.word)} — /${escapeHtml(selection.rhyme)}/</option>`;
-  }
-
-  private updatePreview(): void {
-    const selection = this.selectionFor(this.selectedRhyme);
-    element('#preview-word').textContent = selection.word;
-    element('#preview-sound').textContent = `/${selection.rhyme}/`;
   }
 
   private startRound(selection: RhymeSelection): void {
@@ -305,7 +260,7 @@ export class RhymeMatchApp {
 
           <div class="result-actions">
             <button class="primary-action" type="button" id="play-again">
-              Play this rhyme <span aria-hidden="true">↻</span>
+              ${won ? 'Next rhyme <span aria-hidden="true">→</span>' : 'Try this rhyme <span aria-hidden="true">↻</span>'}
             </button>
             <button class="text-action" type="button" id="choose-rhyme">Choose another rhyme</button>
           </div>
@@ -316,6 +271,7 @@ export class RhymeMatchApp {
 
     element<HTMLButtonElement>('#play-again').addEventListener('click', () => {
       this.selections = createRhymeSelections();
+      if (won) this.selectedRhyme = chooseNextRhyme(round.selection.rhyme);
       this.startRound(this.selectionFor(this.selectedRhyme));
     });
     element<HTMLButtonElement>('#choose-rhyme').addEventListener('click', () => {

@@ -114,6 +114,88 @@ a {
   transform: translateY(0);
 }
 
+/* Start screen */
+.start-view {
+  display: grid;
+  min-height: 100svh;
+  padding: 1.25rem;
+  place-items: center;
+}
+
+.start-screen {
+  width: min(100%, 42rem);
+}
+
+.start-panel {
+  padding: clamp(1.5rem, 6vw, 3rem);
+  border: 3px solid var(--ink);
+  background: rgb(255 253 246 / 92%);
+  box-shadow:
+    var(--shadow),
+    0.75rem 0.75rem 0 rgb(155 217 229 / 70%);
+}
+
+.start-title {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.start-title .brand-mark {
+  flex: 0 0 auto;
+}
+
+.start-title p {
+  margin: 0 0 0.35rem;
+  color: var(--orange-deep);
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.46rem;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.start-title h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 7vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+}
+
+.start-instruction {
+  margin: 1.75rem 0;
+  color: var(--ink-soft);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.start-action {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.4rem;
+}
+
+.start-action > span {
+  color: var(--ink-soft);
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.43rem;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.start-source {
+  margin: 1.5rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.67rem;
+  line-height: 1.5;
+}
+
 .site-shell {
   width: min(100% - 2rem, 88rem);
   margin: 0 auto;
@@ -1341,6 +1423,24 @@ a {
 }
 
 @media (max-width: 47rem) {
+  .start-view {
+    padding: 0.75rem 1.2rem 1.2rem 0.75rem;
+  }
+
+  .start-panel {
+    padding: 1.5rem 1.25rem;
+    box-shadow: 0.55rem 0.55rem 0 rgb(155 217 229 / 70%);
+  }
+
+  .start-title h1 {
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+
+  .start-action {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .site-shell {
     width: min(100% - 1.25rem, 88rem);
   }
