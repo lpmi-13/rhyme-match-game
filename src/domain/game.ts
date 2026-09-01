@@ -43,8 +43,12 @@ export function createDeck(
   random: () => number = Math.random,
 ): GameCard[] {
   const matches = words[selection.rhyme].filter((entry) => entry.word !== selection.word);
+  const targetSyllables = matches[0]?.syllables;
   const distractorRhymes = RHYME_SOUNDS.filter(
-    (rhyme) => rhyme !== selection.rhyme && words[rhyme].length >= DISTRACTOR_COUNT,
+    (rhyme) =>
+      rhyme !== selection.rhyme &&
+      words[rhyme].length >= DISTRACTOR_COUNT &&
+      words[rhyme][0]?.syllables === targetSyllables,
   );
   const distractorRhyme = distractorRhymes[randomIndex(distractorRhymes.length, random)];
 
