@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { RHYME_SOUNDS } from '../src/data/words';
+import words, { RHYME_FAMILIES, RHYME_SOUNDS } from '../src/data/words';
 import { chooseNextRhyme } from '../src/domain/game';
 
 describe('rhyme progression', () => {
@@ -13,5 +13,26 @@ describe('rhyme progression', () => {
 
   it('skips the previous rhyme even when it was first in the list', () => {
     expect(chooseNextRhyme('ɪt', () => 0)).toBe('ʌn');
+  });
+});
+
+describe('rhyme data', () => {
+  it('has enough same-syllable matches for every activity', () => {
+    for (const family of RHYME_FAMILIES) {
+      expect(family.words.length).toBeGreaterThanOrEqual(7);
+      expect(words[family.sound].every((word) => word.syllables === family.syllables)).toBe(true);
+    }
+  });
+
+  it('groups campaign with two-syllable rhymes', () => {
+    const campaignRhyme = 'eɪn';
+    expect(words[campaignRhyme].map((entry) => entry.word)).toEqual(
+      expect.arrayContaining(['campaign', 'refrain', 'sustain']),
+    );
+  });
+
+  it('does not include misleading unmatched words', () => {
+    const allWords = Object.values(words).flatMap((family) => family.map((entry) => entry.word));
+    expect(allWords).not.toEqual(expect.arrayContaining(['everyone', 'national', 'personal']));
   });
 });

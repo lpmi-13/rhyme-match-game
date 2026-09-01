@@ -7,6 +7,7 @@
   "author": "Adam Leskis",
   "license": "MIT",
   "scripts": {
+    "data:check": "node scripts/verify-rhyme-data.mjs",
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",

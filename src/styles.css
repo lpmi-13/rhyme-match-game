@@ -149,7 +149,7 @@ a {
   margin: 0 0 0.35rem;
   color: var(--orange-deep);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.46rem;
+  font-size: 0.6rem;
   line-height: 1.6;
   text-transform: uppercase;
 }
@@ -157,7 +157,7 @@ a {
 .start-title h1 {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2.2rem, 7vw, 3.5rem);
+  font-size: clamp(2.4rem, 7vw, 3.8rem);
   font-weight: 500;
   letter-spacing: -0.055em;
   line-height: 0.9;
@@ -167,7 +167,7 @@ a {
   margin: 1.75rem 0;
   color: var(--ink-soft);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   line-height: 1.5;
 }
 
@@ -182,7 +182,7 @@ a {
 .start-action > span {
   color: var(--ink-soft);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.43rem;
+  font-size: 0.62rem;
   line-height: 1.7;
   text-transform: uppercase;
 }
@@ -192,7 +192,7 @@ a {
   padding-top: 1rem;
   border-top: 1px solid var(--line);
   color: var(--ink-soft);
-  font-size: 0.67rem;
+  font-size: 0.8rem;
   line-height: 1.5;
 }
 
@@ -216,7 +216,7 @@ a {
   align-items: center;
   width: fit-content;
   font-family: "Press Start 2P", monospace;
-  font-size: 0.67rem;
+  font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.5;
@@ -296,7 +296,7 @@ a {
   margin: 0 0 1.6rem;
   color: var(--ink-soft);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.5rem;
+  font-size: 0.62rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.8;
@@ -365,7 +365,7 @@ a {
 
 .rhyme-select-label > span {
   font-family: "Press Start 2P", monospace;
-  font-size: 0.52rem;
+  font-size: 0.62rem;
   font-weight: 400;
   line-height: 1.6;
   text-transform: uppercase;
@@ -378,7 +378,7 @@ a {
   color: var(--orange-deep);
   content: "▼";
   font-family: "Press Start 2P", monospace;
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   pointer-events: none;
 }
 
@@ -392,7 +392,7 @@ a {
   background: var(--paper-bright);
   color: var(--ink);
   font-family: "Press Start 2P", monospace;
-  font-size: clamp(0.55rem, 0.85vw, 0.67rem);
+  font-size: clamp(0.7rem, 0.9vw, 0.82rem);
   font-weight: 400;
   line-height: 1.7;
   box-shadow: 5px 5px 0 var(--arcade-blue);
@@ -414,7 +414,7 @@ a {
   width: fit-content;
   color: var(--orange-deep);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.64rem;
+  font-size: 0.75rem;
   font-weight: 400;
   line-height: 1.7;
 }
@@ -582,7 +582,7 @@ a {
   background: var(--ink);
   color: var(--paper-bright);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.54rem;
+  font-size: 0.65rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.6;
@@ -941,7 +941,7 @@ a {
   margin-bottom: 0.4rem;
   color: var(--mint);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.4rem;
+  font-size: 0.55rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.6;
@@ -952,7 +952,7 @@ a {
   margin: 0;
   color: var(--arcade-gold);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.72rem;
+  font-size: 0.9rem;
   font-weight: 400;
   letter-spacing: -0.04em;
   line-height: 1.7;
@@ -965,7 +965,7 @@ a {
 
 .target-lockup .rhyme-sound {
   color: var(--orange);
-  font-size: 0.55rem;
+  font-size: 0.7rem;
 }
 
 .game-stats {
@@ -984,7 +984,7 @@ a {
 .game-stats p span {
   color: var(--mint);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.38rem;
+  font-size: 0.5rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.6;
@@ -994,7 +994,7 @@ a {
 .game-stats p strong {
   margin-top: 0.2rem;
   font-family: "Press Start 2P", monospace;
-  font-size: 0.67rem;
+  font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.5;
 }
@@ -1006,7 +1006,7 @@ a {
   background: transparent;
   color: inherit;
   font-family: "Press Start 2P", monospace;
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.6;
@@ -1042,7 +1042,7 @@ a {
   margin: 0 0 0.55rem;
   color: var(--orange);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.52rem;
+  font-size: 0.62rem;
   line-height: 1.5;
 }
 
@@ -1050,7 +1050,7 @@ a {
   margin: 0;
   max-width: 38rem;
   font-family: "Press Start 2P", monospace;
-  font-size: clamp(0.95rem, 1.8vw, 1.5rem);
+  font-size: clamp(1.1rem, 2vw, 1.65rem);
   font-weight: 400;
   letter-spacing: -0.05em;
   line-height: 1.55;
@@ -1066,7 +1066,7 @@ a {
   background: rgb(0 0 0 / 24%);
   color: rgb(255 253 246 / 78%);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.42rem;
+  font-size: 0.55rem;
   font-weight: 400;
   line-height: 1.8;
   box-shadow: 4px 4px 0 #080c0a;
@@ -1144,7 +1144,7 @@ a {
   align-self: flex-start;
   color: var(--mint);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.48rem;
+  font-size: 0.58rem;
 }
 
 .word-card:hover .card-number,
@@ -1156,7 +1156,7 @@ a {
   max-width: 100%;
   overflow-wrap: anywhere;
   font-family: "Press Start 2P", monospace;
-  font-size: clamp(0.65rem, 1.05vw, 0.88rem);
+  font-size: clamp(0.78rem, 1.15vw, 1.05rem);
   font-weight: 400;
   letter-spacing: -0.06em;
   line-height: 1.7;
@@ -1172,7 +1172,7 @@ a {
   color: rgb(255 253 246 / 52%);
   align-self: stretch;
   font-family: "Press Start 2P", monospace;
-  font-size: 0.37rem;
+  font-size: 0.48rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.6;
@@ -1211,7 +1211,7 @@ a {
 
 .word-card .card-hint .rhyme-sound {
   color: var(--ink);
-  font-size: 0.46rem;
+  font-size: 0.58rem;
 }
 
 .game-footer {
@@ -1222,7 +1222,7 @@ a {
   padding: 0 0 2rem;
   color: rgb(255 253 246 / 55%);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   font-weight: 400;
   line-height: 1.7;
 }
@@ -1299,7 +1299,7 @@ a {
   margin: 0;
   color: var(--arcade-gold);
   font-family: "Press Start 2P", monospace;
-  font-size: clamp(1.3rem, 3.5vw, 2.4rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.6rem);
   font-weight: 400;
   letter-spacing: -0.06em;
   line-height: 1.5;
@@ -1311,7 +1311,7 @@ a {
   margin: 2rem 0;
   color: var(--paper-bright);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.55rem;
+  font-size: 0.7rem;
   line-height: 2;
 }
 
@@ -1336,7 +1336,7 @@ a {
 .result-stats dt {
   color: var(--mint);
   font-family: "Press Start 2P", monospace;
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.6;
@@ -1346,7 +1346,7 @@ a {
 .result-stats dd {
   margin: 0;
   font-family: "Press Start 2P", monospace;
-  font-size: 0.76rem;
+  font-size: 0.9rem;
   line-height: 1.5;
 }
 
@@ -1433,7 +1433,7 @@ a {
   }
 
   .start-title h1 {
-    font-size: clamp(2rem, 12vw, 3rem);
+    font-size: clamp(2.25rem, 12.5vw, 3.25rem);
   }
 
   .start-action {
@@ -1532,9 +1532,9 @@ a {
   }
 
   .target-lockup > h1 {
-    max-width: 9rem;
+    max-width: 11rem;
     overflow: hidden;
-    font-size: 0.55rem;
+    font-size: 0.75rem;
     text-overflow: ellipsis;
   }
 
@@ -1543,7 +1543,7 @@ a {
   }
 
   .target-lockup .rhyme-sound {
-    font-size: 0.48rem;
+    font-size: 0.62rem;
   }
 
   .game-stats {
@@ -1579,7 +1579,7 @@ a {
   }
 
   .word-card > strong {
-    font-size: clamp(0.52rem, 2.8vw, 0.68rem);
+    font-size: clamp(0.72rem, 3.2vw, 0.9rem);
   }
 
   .word-card[data-state] .card-hint {
@@ -1612,7 +1612,7 @@ a {
   }
 
   .result-stats dd {
-    font-size: 0.58rem;
+    font-size: 0.76rem;
   }
 
   .result-actions {
