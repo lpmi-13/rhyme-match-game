@@ -18,7 +18,7 @@
     "test:security": "npm run build && npx -y start-server-and-test preview http://localhost:4173 docker:security"
   },
   "engines": {
-    "node": ">=20.19"
+    "node": ">=24"
   },
   "dependencies": {
     "preact": "^10.29.8",

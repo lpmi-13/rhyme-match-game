@@ -8,7 +8,7 @@ Built with [Preact](https://preactjs.com/) and [Vite](https://vite.dev/).
 
 ## Requirements
 
-- Node.js >= 20.19
+- Node.js >= 24
 
 ## Local development
 
