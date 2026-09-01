@@ -16,7 +16,6 @@
     "format:check": "biome format .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test",
     "check": "npm run lint && npm run test && npm run build && npm run format:check"
   },
   "engines": {
