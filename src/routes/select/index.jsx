@@ -2,7 +2,7 @@
 import { h, Component } from 'preact';
 import { route } from 'preact-router';
 
-import style from './style.css';
+import style from './style.module.css';
 import data from '../../data/expanded-words.js';
 import setupPath from '../../utils/setupPath';
 
@@ -13,14 +13,14 @@ const rhymeSelections = () => rhymez.map(rhyme => {
 	const rhymezArray = data[rhyme];
 	const randomIndex = selectedIndex(rhymezArray);
 	const selectedWord = rhymezArray[randomIndex];
-	return {"word": `${selectedWord.word}`, "rhyme": `${rhyme}`}
+	return {"word": `${selectedWord.word}`, "rhyme": `${rhyme}`};
 });
 
 export default class Select extends Component {
 
   state = {
 		rhymeSelections: rhymeSelections(),
-	}
+	};
 
 	startGame = (selection) => {
     this.props.onSelectRhyme(selection);
@@ -39,6 +39,6 @@ export default class Select extends Component {
 				)}
 				</div>
 			</div>
-		)
+		);
 	}
 }

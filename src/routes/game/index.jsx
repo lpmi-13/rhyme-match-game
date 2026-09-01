@@ -2,7 +2,7 @@ import { h, Component } from 'preact';
 import { route } from 'preact-router';
 
 import Card from '../../components/card';
-import style from './style.css';
+import style from './style.module.css';
 import { generateGridCards } from '../../utils';
 import setupPath from '../../utils/setupPath';
 
@@ -28,15 +28,15 @@ export default class Game extends Component {
     }
 
     if (flippedCards[key] ){
-	    return 'FLIPPED'
+	    return 'FLIPPED';
     }
 		
 		return 'DEFAULT';
-  }
+  };
 
   createCardClickListener = item => () => {
     this.checkCardStatus(item);
-  }
+  };
 	
 	checkCardStatus = ({ key, values }) => {
 		const { correctCards, flippedCards, rhymeToMatch, score, wrongCards } = this.state;
@@ -55,21 +55,21 @@ export default class Game extends Component {
 				 this.countMistakes();
 			});
 		}
-	}
+	};
 
   countScore = () => {
 		const { score } = this.state;
 		if (score === 6) {
 			this.handleWin();
 		}
-	}
+	};
 
 	countMistakes = () => {
 		const { wrongCards } = this.state;
 		if (Object.keys(wrongCards).length >= 3) {
 			this.handleLoss();
 		}
-	}
+	};
 
 	handleWin = () => {
 		setTimeout(() => {
@@ -79,7 +79,7 @@ export default class Game extends Component {
 			});
 			route(`${setupPath()}/win`);
 		}, 300);
-	}
+	};
 
   handleLoss = () => {
 	  setTimeout(() => {
@@ -89,7 +89,7 @@ export default class Game extends Component {
 	  	});
       route(`${setupPath()}/loss`);
     }, 300);
-	}
+	};
 				
 	render(props, state) {
 

@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import { route } from 'preact-router';
 
-import style from './style.css';
+import style from './style.module.css';
 import setupPath from '../../utils/setupPath';
 
 export default class Win extends Component{

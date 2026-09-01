@@ -2,7 +2,7 @@
 import { h, Component } from 'preact';
 import { route } from 'preact-router';
 
-import style from './style.css';
+import style from './style.module.css';
 import setupPath from '../../utils/setupPath';
 
 export default class Home extends Component{
@@ -18,6 +18,6 @@ export default class Home extends Component{
             </div>
 						<button class={style.button} onClick={this.select}>New Game</button>
         	</div>
-          )
+          );
 	}
 }
